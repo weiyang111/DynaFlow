@@ -35,7 +35,7 @@ pip install torch torch-geometric pandas numpy scipy scikit-learn tqdm
 
 **Input**: Raw edge lists in `data/` directory (format: `[source, target, timestamp]`)
 
-**Output**: `.pt` files containing temporally windowed graph subsequences
+**Output**: files containing temporally windowed graph subsequences
 
 Supported datasets: bitcoinalpha, bitcoinotc, email-dnc, topology, uci, digg
 
