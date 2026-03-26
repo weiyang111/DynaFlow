@@ -1,8 +1,5 @@
-# DynaFlow: Dynamic Graph Neural Network Anomaly Detection
-
-## Overview
-
-DynaFlow is an anomaly detection system for dynamic graphs using **Graph Neural Networks (GNN)** and **Graph Fourier Transform (GFT)**. It combines spatial aggregation and temporal modeling to detect anomalous behaviors in dynamic networks.
+# DynaFlow
+Official implementation of "Frequency-Temporal-Enhanced Graph Neural Architecture for Dynamic Anomaly Detection"
 
 **Key Features:**
 - **Frequency-Domain Enhancement (GFT Layer)**: Feature decomposition via graph Fourier transform
@@ -146,8 +143,6 @@ with torch.no_grad():
 ```
 
 ## Training Configuration
-
-- **Data Split**: 50% train, 50% test
 - **Batch Size**: 32
 - **Optimizer**: Adam (LR=1e-4)
 - **Loss Function**: Binary Cross Entropy
