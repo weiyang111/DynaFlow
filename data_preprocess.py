@@ -252,8 +252,6 @@ def main_preprocess(dataset_key, data_dir=".", window_size=5, h_hops=1, anomaly_
                 processed_dataset.append({'target_edge': (u, v), 'timestamp': t, 'window_subgraphs': window_subgraphs, 'label': 1})
 
     torch.save(processed_dataset, save_path)
-    print(f"\n✅ [{dataset_key.upper()}] 处理完毕！共生成 {len(processed_dataset)} 个时间序列样本。")
-    print(f"数据已高速缓存至: {save_path}\n")
 
 
 if __name__ == "__main__":
