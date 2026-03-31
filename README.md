@@ -165,5 +165,3 @@ with torch.no_grad():
 | Slow training | Verify CUDA availability; use GPU |
 
 ## License
-
-[Add license information as needed]
