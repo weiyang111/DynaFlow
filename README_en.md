@@ -1,19 +1,19 @@
-# DynaFlow Scratch Reproduction
+# DynaFlow Reproduction (English)
 
-A from-scratch implementation for dynamic graph edge anomaly detection inspired by DynaFlow (research reproduction, not an official line-by-line clone).
+This is a scratch implementation for dynamic graph edge anomaly detection inspired by DynaFlow (for research reproduction, not an official line-by-line clone).
 
-## Docs
-- Chinese full doc: [README_zh.md](./README_zh.md)
-- English full doc: [README_en.md](./README_en.md)
+## Documentation
+- Main README (short): [README.md](./README.md)
+- Chinese version: [README_zh.md](./README_zh.md)
 
-## What This Repo Includes
+## What This Repo Provides
 - Dataset download and preprocessing for 6 public dynamic graph datasets
 - Time-based train/test split with controllable anomaly injection
 - DynaFlow-style pipeline:
   - Spectral enhancement
   - Graph structure aggregation
   - Temporal modeling for edge anomaly scoring
-- JSON result export with AUC/AP/F1 and metadata
+- JSON result export with AUC/AP/F1 and run metadata
 
 ## Project Layout
 ```text
@@ -33,7 +33,7 @@ dynaflow_scratch/
 
 ## Quick Start
 
-### 1) Install
+### 1) Install dependencies
 ```bash
 cd dynaflow_scratch
 pip install -r requirements.txt
@@ -56,20 +56,20 @@ PYTHONPATH=src python3 -m dynaflow.train --dataset digg --anomaly-ratio 0.10
 
 ## Common Training Examples
 
-### Run as module (recommended)
+### Run in module mode (recommended)
 ```bash
 PYTHONPATH=src python3 -m dynaflow.train \
   --dataset uci_messages \
   --anomaly-ratio 0.05
 ```
 
-### Run as script
+### Run as a script
 ```bash
 cd src/dynaflow
 python train.py --dataset digg --anomaly-ratio 0.10
 ```
 
-### Use sample cache to speed up repeated runs
+### Use sample cache for faster reruns
 ```bash
 PYTHONPATH=src python3 -m dynaflow.train \
   --dataset digg \
@@ -79,7 +79,7 @@ PYTHONPATH=src python3 -m dynaflow.train \
 
 ## Key Arguments
 - `--dataset`: `uci_messages | digg | email_dnc | bitcoin_alpha | bitcoin_otc | topology`
-- `--anomaly-ratio`: anomaly ratio in test split (e.g. `0.01`, `0.05`, `0.10`)
+- `--anomaly-ratio`: anomaly ratio in test split (e.g., `0.01`, `0.05`, `0.10`)
 - Negative sampling uses the built-in StrGNN-style context-dependent sampler.
 - `--no-use-spectral`: w/o spectral ablation
 - `--no-use-low-pass`: keep eigendecomposition but remove the `exp(-beta*lambda)` low-pass filter
@@ -105,7 +105,7 @@ PYTHONPATH=src python3 scripts/run_ablation.py \
 Outputs are written to `results/ablations/`, including per-run JSON files, checkpoints, `ablation_summary.json`, and `ablation_summary.csv`.
 
 ## Output
-- Default output file: `results/{dataset}_rXX.json`
+- Default output path: `results/{dataset}_rXX.json`
 - Metrics include:
   - `auc`, `ap`
   - `precision`, `f1`
@@ -116,12 +116,12 @@ Outputs are written to `results/ablations/`, including per-run JSON files, check
 ## Troubleshooting
 - Import error when running script directly:
   - Prefer module mode: `PYTHONPATH=src python3 -m dynaflow.train ...`
-- First run appears slow before epoch starts:
-  - This is usually sample construction + anomaly injection
-  - Add `--samples-cache ...` for faster reruns
-- No progress bar:
-  - Remove `--no-progress` if currently enabled
+- Long wait before the first epoch:
+  - Usually sample construction + anomaly injection
+  - Use `--samples-cache ...` for faster reruns
+- No progress bars:
+  - Check whether `--no-progress` is enabled
 
-## Notes
-- This repo is for research reproduction and experimentation.
+## Disclaimer
+- This repository is intended for research reproduction and experimentation.
 - Results may differ from official paper/release implementations.
